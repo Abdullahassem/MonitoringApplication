@@ -57,6 +57,7 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 public class MainActivity extends AppCompatActivity {
 
     TextView internet,tvlatitude,tvlongitude,battery;
+    Button button;
 
 
     private ArrayList permissionsToRequest;
@@ -104,8 +105,26 @@ public class MainActivity extends AppCompatActivity {
         tvlatitude=findViewById(R.id.latitude);
         tvlongitude=findViewById(R.id.longitude);
         battery=findViewById(R.id.battery);
+        button=findViewById(R.id.button);
         permissions.add(ACCESS_FINE_LOCATION);
         permissions.add(ACCESS_COARSE_LOCATION);
+
+
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+            }
+        });
+
+
+
+
 
         if(internetIsConnected()){
             internet.setText("There is an internet connection.");
